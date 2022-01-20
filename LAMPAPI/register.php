@@ -5,9 +5,8 @@
     $lastName = $inData['lastName'];
     $login = $inData['login'];
     $password = $inData['password'];
-    $ip = "137.184.48.52";
 
-    $conn = new mysqli($ip, "TheBeast", "WeLoveCOP4331", "COP4331");
+    $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if ($conn->connect_error){
         returnWithError($conn->connect_error);
     }
