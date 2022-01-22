@@ -9,7 +9,7 @@
     $lastName = "";
     
     date_default_timezone_set("America/New_York");
-    $currentTime = date("Y-m-d h:i:sa");
+    $currentTime = date("Y-m-d G:i:s");
 
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if ($conn->connect_error){
@@ -24,6 +24,8 @@
         $result = $stmt->get_result();
 
         if ($row = $result->fetch_assoc()){
+            $sql = "UPDATE Users SET DateLastLoggedIn=now() WHERE Login='$login'";
+            $conn->query($sql);
             returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID']);
         }
 
