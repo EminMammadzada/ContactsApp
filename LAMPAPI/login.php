@@ -1,5 +1,7 @@
 <?php
 
+
+    //get the user entered values
     $inData = getRequestInfo();
     $login = $inData['login'];
     $password = $inData['password'];
@@ -7,14 +9,13 @@
     $id = 0;
     $firstName = "";
     $lastName = "";
-    
-    date_default_timezone_set("America/New_York");
-    $currentTime = date("Y-m-d G:i:s");
 
+    //establish connection with the database
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
     if ($conn->connect_error){
         returnWithError($conn->connect_error);
     }
+
 
     else{
         $stmt = $conn->prepare("SELECT ID, FirstName, LastName FROM Users WHERE Login=? AND Password=?");
@@ -22,6 +23,8 @@
         $stmt->execute();
 
         $result = $stmt->get_result();
+
+        //if the user exists print the info; otherwise give an error message
 
         if ($row = $result->fetch_assoc()){
             $sql = "UPDATE Users SET DateLastLoggedIn=now() WHERE Login='$login'";
