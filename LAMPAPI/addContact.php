@@ -45,7 +45,7 @@
 				$stmt3->bind_param("sssss", $userId, $firstName, $lastName, $email, $phone);
 				$stmt3->execute();
 				$stmt3->close();
-				returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID']);
+				returnWithInfo( $firstName, $lastName, $userId);
 			}
         }
 
@@ -62,7 +62,7 @@
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson( $obj )
+    function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
 		echo $obj;
@@ -71,6 +71,12 @@
 	function returnWithError( $err )
 	{
 		$retValue = '{"error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+
+    function returnWithInfo( $firstName, $lastName, $id)
+	{
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
