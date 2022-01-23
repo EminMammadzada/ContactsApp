@@ -33,10 +33,26 @@
             $stmt2 = $conn->prepare("INSERT into Users (FirstName, LastName, Login, Password) VALUES(?,?,?,?)");
             $stmt2->bind_param("ssss", $firstName, $lastName, $login, $password);
             $stmt2->execute();
-
-
             $stmt2->close();
-            returnWithError("");
+
+
+            //get the ID of the newly created user
+            $stmt3 = $conn->prepare("SELECT * FROM Users WHERE Login=?");
+            $stmt3->bind_param("s", $login);
+            $stmt3->execute();
+    
+            $result2 = $stmt->get_result();
+            
+            if ($row = $result2->fetch_assoc()){
+                returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID']);
+            }
+
+            else{
+                returnWithError("User could not be created for some reason");
+            }
+
+            $stmt3->close();
+
         }
 
         $stmt->close();
@@ -57,6 +73,12 @@
 	function returnWithError( $err )
 	{
 		$retValue = '{"error":"' . $err . '"}';
+		sendResultInfoAsJson( $retValue );
+	}
+
+    function returnWithInfo( $firstName, $lastName, $id)
+	{
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>

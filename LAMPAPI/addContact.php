@@ -27,11 +27,11 @@
             $stmt2->bind_param("sssss", $userId, $firstName, $lastName, $email, $phone);
             $stmt2->execute();
             $stmt2->close();
-            returnWithError("");
+            returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID']);
         }
 
         else{
-            returnWithError("There is no such user. You cannot add contacts to unexisting user");
+            returnWithError("There is no such user. You cannot add contacts for an unexisting user");
         }
 
         $stmt->close();
