@@ -1,0 +1,31 @@
+header {
+    text-align: center;
+    background-color: #4C5454;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-style: solid;
+    border-bottom-width: 20px;
+    border-color: #FF715B;
+}
+
+body {
+    text-align: center;
+}
+
+.para1 {
+    margin-top: 20px;
+    margin-left: 400px;
+    margin-right: 400px
+}
+
+.section1 {
+    background-color: maroon;
+    padding-top: 60px;
+    padding-bottom: 80px;
+    color: white;
+}
+
+.login-container {
+	padding-top:60px;
+	padding-bottom:60px;
+}
