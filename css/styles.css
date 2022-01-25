@@ -3,6 +3,9 @@ header {
     background-color: #4C5454;
     padding-top: 20px;
     padding-bottom: 20px;
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
     border-style: solid;
     border-bottom-width: 20px;
     border-color: #FF715B;
@@ -10,6 +13,9 @@ header {
 
 body {
     text-align: center;
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .para1 {
@@ -24,6 +30,9 @@ body {
     background-size: cover;
     box-shadow: inset 2000px 0 0 0 rgba(0, 0, 0, 0.5);
     height: 450px;
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 60px;
     padding-bottom: 80px;
     color: white;
