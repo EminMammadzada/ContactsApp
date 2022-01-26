@@ -22,6 +22,11 @@ header::after {
     clear: both;
 }
 
+small 
+{
+    display: inline-block;
+}
+
 .logo {
     float: left;
     height: 55px;
