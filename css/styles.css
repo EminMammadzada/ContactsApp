@@ -13,7 +13,7 @@ header {
 
 body {
     text-align: center;
-    width: 1440px;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -65,4 +65,46 @@ body {
 #HomeH3 {
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
+}
+
+#registerForm,
+#loginForm {
+    margin-left: auto;
+    margin-right: auto;
+}
+#registerForm h2,
+#loginForm h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+}
+
+input[type=text] {
+    
+    padding: 10px;
+    margin-top: 30px;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,0.10);
+    transition: .3s box-shadow;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    width: 40%;
+}
+
+input[type=text]:hover {
+    box-shadow:0 0 4px rgba(0,0,0,0.5);
+}
+
+button[type=submit] {
+    background-color: #FF715B;
+    color: white;
+    padding: 10px;
+    margin-top: 30px;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.10);
+    border: none;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    width: 41%;
 }
