@@ -26,10 +26,10 @@ header::after {
     float: left;
     height: 55px;
     padding: 10px 0 ;
+    filter: invert(68%) sepia(53%) saturate(5100%) hue-rotate(326deg) brightness(107%) contrast(101%);
 }
-
 .logo:hover {
-fill: aqua !important;
+    filter: invert(99%) sepia(4%) saturate(2%) hue-rotate(200deg) brightness(115%) contrast(100%);
 }
 
 nav {
@@ -128,9 +128,30 @@ nav li:hover a::before{
 }
 .section1 button {
     background-color: #FF715B;
-    border: none;
+    border:#FF715B;
+    border-style: solid;
+    border-color: #FF715B;
+    border-width: 3px;
     border-radius: 25px;
+    
     color: white;
+    height: 40px;
+    width: 150px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.section1 button:hover {
+    background-color: white;
+    border:#FF715B;
+    border-style: solid;
+    border-color: #FF715B;
+    border-width: 3px;
+    border-radius: 25px;
+    transition: all 0.3s;
+    color:#FF715B;
     height: 40px;
     width: 150px;
     font-size: 18px;
@@ -220,7 +241,29 @@ button[type=submit] {
     padding: 10px;
     margin-top: 30px;
     box-shadow: 0 0 15px 4px rgba(0,0,0,0.10);
-    border: none;
+    border:#FF715B;
+    border-style: solid;
+    border-color: #FF715B;
+    border-width: 3px;
+    border-radius: 25px;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    width: 41%;
+}
+
+button[type=submit]:hover {
+    background-color: white;
+    color:#FF715B;
+    padding: 10px;
+    margin-top: 30px;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.10);
+    border:#FF715B;
+    border-style: solid;
+    border-color: #FF715B;
+    border-width: 3px;
+    transition: all 0.3s;
     border-radius: 25px;
     font-family: 'Poppins', sans-serif;
     font-size: 17px;
