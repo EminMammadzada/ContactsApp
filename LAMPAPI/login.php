@@ -29,7 +29,7 @@
         if ($row = $result->fetch_assoc()){
             $sql = "UPDATE Users SET DateLastLoggedIn=now() WHERE Login='$login'";
             $conn->query($sql);
-            returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID']);
+            returnWithInfo( $row['FirstName'], $row['LastName'], $login, $row['ID']);
         }
 
         else{
@@ -56,9 +56,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-    function returnWithInfo( $firstName, $lastName, $id)
+    function returnWithInfo( $firstName, $lastName, $login, $id)
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","login":"' . $login . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>

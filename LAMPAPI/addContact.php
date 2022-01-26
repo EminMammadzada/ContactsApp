@@ -45,7 +45,7 @@
 				$stmt3->bind_param("sssss", $userId, $firstName, $lastName, $email, $phone);
 				$stmt3->execute();
 				$stmt3->close();
-				returnWithInfo( $firstName, $lastName, $userId);
+				returnWithInfo( $firstName, $lastName, $email, $phone, $userId);
 			}
         }
 
@@ -74,9 +74,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-    function returnWithInfo( $firstName, $lastName, $id)
+    function returnWithInfo( $firstName, $lastName, $email, $phone, $id)
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","email":"' . $email . '","phone":"' . $phone . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>

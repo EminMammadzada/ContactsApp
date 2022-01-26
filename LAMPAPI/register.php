@@ -41,10 +41,10 @@
             $stmt3->bind_param("s", $login);
             $stmt3->execute();
     
-            $result2 = $stmt->get_result();
+            $result2 = $stmt3->get_result();
             
-            if ($row = $result2->fetch_assoc()){
-                returnWithInfo( $row['FirstName'], $row['LastName'], $row['ID']);
+            if ($row2 = $result2->fetch_assoc()){
+                returnWithInfo( $row2['FirstName'], $row2['LastName'], $row2['Login'], $row2['ID']);
             }
 
             else{
@@ -76,9 +76,9 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-    function returnWithInfo( $firstName, $lastName, $id)
+    function returnWithInfo( $firstName, $lastName, $login, $id)
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","login":"' . $login . '","lastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
