@@ -5,26 +5,46 @@
         <link rel="icon" type="image/svg+xml" href="images/PrimalJetLogo.svg">
         <link rel="stylesheet" href="/css/styles.css">
     </head>
-    <header>
-        <a href="index.html">Home</a>
-        <a href="HTML/login.html">Login</a>
-        <a href="HTML/contact.html">Contacts</a>
-    </header>
+    
 
     <body>
+        <header>
+            <div class="container">
+                <a href="index.html"><img src="images/PrimalJetLogo.svg" alt="logo" class="svg logo"></a>
+
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="HTML/login.html">Login</a></li>
+                        <li><a href="HTML/about.html">About Us</a></li>
+                        <li><a href="HTML/contact.html">Contacts</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+            
+        </header>
+
         <div class="section1">
             <h3 id="HomeH3">Worlds Best Contact Manager</h3>
             <h1 id="HomeH1">PrimalJet</h1>
-
-            <button onclick="window.location.href='HTML/login.html';" type="Log In">Log In</button>
-            <button onclick="window.location.href='HTML/register.html';" type="Register">Register</button>
+            <div class="buttons1">
+                <button onclick="window.location.href='HTML/login.html';" type="Log In">Log In</button>
+                <button onclick="window.location.href='HTML/register.html';" type="Register">Register</button>
+            </div>
+            
         </div>
-
-        <h3>Why should you choose us?</h3>
-        <p class="para1">
-            Sample text sample text Sample text sample text Sample text sample text Sample text sample text Sample
-            text sample text Sample text sample text Sample text sample text. Sample text sample text Sample text sample text
-            Sample text sample text Sample text sample text Sample text sample text Sample text sample text Sample text.
-        </p>
+        <div class="homeInfo">
+            <h3>Why should you choose us?</h3>
+            <p class="para1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis varius magna. 
+                Mauris malesuada leo mi, in dictum nunc gravida vel. Praesent non lorem elit. 
+                Integer ultrices placerat ligula, at eleifend diam posuere id. 
+                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+                Nunc egestas velit in purus eleifend, in porttitor augue posuere. 
+            </p>
+        </div>
+        
+        
     </body>
 </html>

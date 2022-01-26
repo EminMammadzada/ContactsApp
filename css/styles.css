@@ -1,21 +1,111 @@
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
 header {
-    text-align: center;
     background-color: #4C5454;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: solid;
+    border-style: none none solid none;
     border-bottom-width: 20px;
     border-color: #FF715B;
 }
 
-body {
-    text-align: center;
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
+header::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.logo {
+    float: left;
+    height: 55px;
+    padding: 10px 0 ;
+}
+
+.logo:hover {
+fill: aqua !important;
+}
+
+nav {
+    float: right;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+nav li {
+    position: relative;
+    padding: 0 25px;
+    height: 75px;
+    display: flex;
+}
+
+nav a {
+    z-index: 1;
+    color: white;
+    text-decoration: none;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 30px 20px;
+}
+
+nav a:hover {
+    color: white;
+}
+
+nav li::before {
+    content: "";
+    position: absolute;
+    height: 33.33%;
+    width: 0;
+    background-color: #FF715B;
+    right: 0;
+    z-index: 0;
+    top: 33.33%;
+    transition: all 0.5s;
+}
+
+nav li::after {
+    content: "";
+    position: absolute;
+    height: 33.33%;
+    width: 0;
+    background-color: #FF715B;
+    left: 0;
+    z-index: 0;
+    bottom: 0;
+    transition: all 0.5s;
+}
+
+nav a::before {
+    position: absolute;
+    content: "";
+    height: 33.33%;
+    width: 0;
+    background-color: #FF715B;
+    bottom: 66.66%;
+    left: 0;
+    transition: all 0.5s;
+}
+
+nav li:hover:before,
+nav li:hover::after,
+nav li:hover a::before{
+   width: 100%;
 }
 
 .para1 {
@@ -29,8 +119,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: inset 2000px 0 0 0 rgba(0, 0, 0, 0.5);
-    height: 450px;
-    width: 1440px;
+    max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 60px;
@@ -44,9 +133,16 @@ body {
     color: white;
     height: 40px;
     width: 150px;
-    text-align: center;
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.buttons1 {
+    display: flex;
+    justify-content: center;
+    margin-left: 10px;
+    
 }
 
 .login-container {
@@ -59,18 +155,41 @@ body {
 #HomeH1 {
     font-family: 'Poppins', sans-serif;
     font-size: 72px;
+    text-align: center;
 }
 
 
 #HomeH3 {
     font-family: 'Poppins', sans-serif;
     font-size: 24px;
+    text-align: center;
+}
+
+.homeInfo {
+    padding-top: 20px;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.homeInfo h3 {
+    font-size: 22px;
+}
+
+.homeInfo p {
+    font-size: 18px;
 }
 
 #registerForm,
 #loginForm {
+    max-width: 1440px;
     margin-left: auto;
     margin-right: auto;
+    display: block;
+    justify-content: center;
+    text-align: center;
 }
 #registerForm h2,
 #loginForm h2 {
