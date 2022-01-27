@@ -6,7 +6,7 @@
     with the specified Record ID.
   */
 
-  // scraped info
+  // new data
   $inData = getRequestInfo();
   $firstName = $inData["firstName"];
   $lastName = $inData["lastName"];
@@ -14,7 +14,6 @@
   $phone = $inData["phone"];
 
   // stored info(hidden variable)
-  $userID = $inData["id"]; // logged in user id, NOT record id
   $recordID = $inData["recordID"];
 
   $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -24,8 +23,8 @@
   }
   else
   {
-    $stmt = $conn->prepare("SELECT * FROM Records WHERE ID=? AND UserID=?");
-    $stmt->bind_param("ss", $recordID, $userID);
+    $stmt = $conn->prepare("SELECT * FROM Records WHERE Id=?");
+    $stmt->bind_param("s", $recordID);
     $stmt->execute();
 
     $result = $stmt->get_result();
@@ -34,9 +33,10 @@
     if ($row = $result->fetch_assoc())
     {
       // sets up the command for updating the contact with the specific recordID and userID
-      $stmt2 =  $conn->prepare("UPDATE Records SET FirstName=? AND LastName=? AND Email=? AND Phone=? WHERE ID=? AND UserID=?");
-      $stmt2->bind_param("ssssss", $firstName, $lastName, $email, $phone, $recordID, $userID);
+      $stmt2 =  $conn->prepare("UPDATE Records SET FirstName=?, LastName=?, Email=?, Phone=? WHERE ID=?");
+      $stmt2->bind_param("sssss", $firstName, $lastName, $email, $phone, $recordID);
       $stmt2->execute();
+      $result2 = $stmt2->get_result();
       returnWithError("");
       $stmt2->close();
     }
