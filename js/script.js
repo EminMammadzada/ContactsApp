@@ -71,7 +71,7 @@ function validLogin() {
     login()
 }
 
-const urlBase = 'http://127.0.0.1:5500/LAMPAPI';
+const urlBase = 'http://primaljet.com/LAMPAPI';
 const extension = 'php';
 
 function register() {
