@@ -1,11 +1,7 @@
 <?php
 
     $inData = getRequestInfo();
-	$firstName = $inData["firstName"];
-	$lastName = $inData["lastName"];
-    $email = $inData["email"];
-    $phone = $inData["phone"];
-    $id = $inData["id"]; //logged in user id, NOT record id
+	$recordID = $inData["recordID"];
 
 
     $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -15,8 +11,8 @@
 	} 
 	else
 	{
-        $stmt = $conn->prepare("SELECT * FROM Records WHERE FirstName=? AND LastName=? AND Email=? AND Phone=? AND UserID=?");
-		$stmt->bind_param("sssss", $firstName, $lastName, $email, $phone, $id);
+        $stmt = $conn->prepare("SELECT * FROM Records WHERE ID=?");
+		$stmt->bind_param("s", $recordID);
 		$stmt->execute();
 
 		$result = $stmt->get_result();
@@ -24,8 +20,8 @@
 
         //if there is such contact, then delete it
         if ($row = $result->fetch_assoc()){
-            $stmt2 =  $conn->prepare("DELETE FROM Records WHERE FirstName=? AND LastName=? AND Email=? AND Phone=? AND UserID=?");
-            $stmt2->bind_param("sssss", $firstName, $lastName, $email, $phone, $id);
+            $stmt2 =  $conn->prepare("DELETE FROM Records WHERE ID=?");
+            $stmt2->bind_param("s", $recordID);
 		    $stmt2->execute();
 
             returnWithError("");
@@ -58,11 +54,4 @@
 		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-
-    function returnWithInfo( $firstName, $lastName, $id)
-	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
-		sendResultInfoAsJson( $retValue );
-	}
-
 ?>
