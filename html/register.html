@@ -3,10 +3,6 @@
     <head>
         <title>PrimalJet Registration</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <script defer type="text/javascript" src="../javascript/script.js"></script>  
-
 		<link rel="icon" type="svg+xml" href="../images/PrimalJetLogo.png">
         <link rel="stylesheet" href="../css/styles.css">
     </head>
@@ -28,39 +24,43 @@
             </div>
             
         </header>
+
 		<div id="registerForm">
 			<h2>Create an Account</h2>
 
-            <div id="error">Error</div>
-
-            <form method="GET">
-                <div class="form-control">
-				    <input type="text" placeholder="First name" id="fname" name="fname"><br>
-                    <small>Error</small>
-				</div>
-
-                <div class="form-control">
-                    <input type="text" placeholder="Last name" id="lname" name="lname"><br>
-                    <small>Error</small>
+            <form id="register" class="form">
+                <h2>Create an Account</h2>
+                <div class="form-field">
+                    <label for="fname">First Name</label>
+				    <input type="text" id="fname" name="fname" autocomplete="off"><br>
+                    <small></small>
                 </div>
-
-                <div class="form-control">
-                    <input type="text" placeholder="Username" id="userID" name="userID"><br>
-                    <small>Error</small>
+                <div class="form-field">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lname"><br>
+                    <small></small>
                 </div>
-
-                <div class="form-control">
-                    <input type="text" placeholder="Password" id="password" name="password"><br>
-                    <small>Error</small>
+                <div class="form-field">
+                    <label for="userID">Username</label>
+                    <input type="text" id="userID" name="userID"><br>
+                    <small></small>
                 </div>
-
-                <div class="form-control">
-                    <input type="text" placeholder="Confirm password" id="confirmpass" name="confirmpass"><br>
-                    <small>Error</small>
+                <div class="form-field">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" name=password"><br>
+                    <small></small>
                 </div>
-
-				<button type="submit">Register Now</button>
-			  </form>
+                <div class="form-field">
+                    <label for="confirmpass">Confirm Password</label>
+                    <input type="text" id="confirmpass" name="confirmpass"><br>
+                    <small></small>
+                </div>      
+                <div class="form-field">
+                    <input type="submit" value="Sign Up">
+                </div>              
+                </div>
+			</form>
 		</div>
+        <script src="../javascript/script.js"></script>
 	</body>  
 </html>
