@@ -25,13 +25,12 @@
         </header>
 
 		<div id="loginForm">
-			<h2>Welcome Back</h2>
-			<form name="login" class="form-inline" action="/action_page.php">
-				<input type="text" placeholder="Username" id="username" name="username"><br>
-				<input type="text" placeholder="Password" id="password" name ="password"><br>
-	
-				<button type="submit">Log In</button>
-			  </form>
+            <input type="text" id="user">
+            <input type="password" id="password">
+
+            <button type="button" id="registerButton" class="buttons" onclick="validLogin()">Login!</button>
+            <span id="loginResult"></span>
 		</div>
+        <script src="../javascript/script.js"></script>
 	</body>
 </html>

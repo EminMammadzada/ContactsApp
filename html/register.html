@@ -27,39 +27,13 @@
 
 		<div id="registerForm">
 			<h2>Create an Account</h2>
+                <input type="text" id="rfirst">
+                <input type="text" id="rlast">
+                <input type="text" id="ruser">
+                <input type="password" id="rpassword">
 
-            <form id="register" class="form">
-                <h2>Create an Account</h2>
-                <div class="form-field">
-                    <label for="fname">First Name</label>
-				    <input type="text" id="fname" name="fname" autocomplete="off"><br>
-                    <small></small>
-                </div>
-                <div class="form-field">
-                    <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lname"><br>
-                    <small></small>
-                </div>
-                <div class="form-field">
-                    <label for="userID">Username</label>
-                    <input type="text" id="userID" name="userID"><br>
-                    <small></small>
-                </div>
-                <div class="form-field">
-                    <label for="password">Password</label>
-                    <input type="text" id="password" name=password"><br>
-                    <small></small>
-                </div>
-                <div class="form-field">
-                    <label for="confirmpass">Confirm Password</label>
-                    <input type="text" id="confirmpass" name="confirmpass"><br>
-                    <small></small>
-                </div>      
-                <div class="form-field">
-                    <input type="submit" value="Sign Up">
-                </div>              
-                </div>
-			</form>
+                <button type="button" id="registerButton" class="buttons" onclick="validRegister()">Sign Up!</button>
+                <span id="registerResult"></span>
 		</div>
         <script src="../javascript/script.js"></script>
 	</body>  
