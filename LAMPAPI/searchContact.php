@@ -1,19 +1,18 @@
 <?php
-
+// TODO: ensure that regular echos still fit into the json format
   /*
     User ID is cached in a variable, and the inputs array contains the first name, last name,
     email, and phone number. This endpoint searches all possible permutations of the inputs
-    associated with the current user and returns a
+    associated with the current user and returns the sql results as a json array
   */
 
-  // scraped info
   $inData = getRequestInfo();
+  // search bar data
   $arrayOfInputs = $inData["inputs"];
-
-  // session info
-  //TODO: change all "id" to 'userID'
+  // cached data
   $userID = $inData["userId"];
 
+  // establishes connection with mysqli, and errors out if the connection fails
   $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
   if ($conn->connect_error)
   {
@@ -22,26 +21,25 @@
   // else if the sql session was opened without error
   else
   {
-    // One search bar need input seperated by spaces into an array, arrayOfInputs
-    // length of array of inputs array is stored in $numInputs
-
-
-    // sets up the start of the command
     $userAttemptedSQLInjection = false;
-    $index = 0;
-    $numInputs = sizeof($arrayOfInputs);
 
+    // starts off filtering by UserID
     $command = 'SELECT * FROM Records WHERE UserID=' . $userID;
+
+    $numInputs = sizeof($arrayOfInputs);
+    $index = 0;
+
+    // for each input, include a consideration of that input against each field
     while ($numInputs > 0)
     {
-      // if the user is not attempting an SQL injection at this index, continue to concatenate the massive SQL command
+      // if the user has not attempted an SQL injection, continue to concatenate to the command
       if (!str_contains($arrayOfInputs[$index], ';'))
       {
         $command .= ' AND (FirstName LIKE "%' . $arrayOfInputs[$index] . '%" OR LastName LIKE "%' . $arrayOfInputs[$index] . '%" OR Phone LIKE "%' . $arrayOfInputs[$index] . '%" OR Email LIKE "%' . $arrayOfInputs[$index] . '%")';
         $index++;
         $numInputs--;
-        // every index after the first should INTERSECT with the following concatenated commands
       }
+      // if the user attempted an sql injection, break
       else
       {
         $userAttemptedSQLInjection = true;
@@ -49,17 +47,20 @@
       }
     }
 
-    // if the user did not attempt an SQL injection, execute the command
     if (!$userAttemptedSQLInjection)
     {
+      // executes the massive command
       $stmt = $conn->prepare($command);
       $stmt->execute();
+
+      // stores the resulting jsons into $rows
       $result = $stmt->get_result();
       $rows = resultToArray($result);
 
       $rowCount = sizeof($rows);
       $index = 0;
-      // if there is such contact, then return its details
+
+      // echos the contents of an array of json rows
       echo '{"results": [';
       while ($index < $rowCount)
       {
@@ -71,17 +72,18 @@
         }
       }
       echo '], "error":""}';
-      
+
       $result->free_result();
     }
+    // if the user attempted an sql injection
     else
     {
       youSuck();
     }
     $conn->close();
-
   }
 
+  // takes in an SQL statement result and returns an array of the resulting rows
   function resultToArray($result)
   {
     $rows = array();
@@ -98,9 +100,11 @@
   {
     return json_decode(file_get_contents('php://input'), true);
   }
+
+  // if the user attempts an sql injection or they just suck
   function youSuck()
   {
-    echo "You Suck.";
+    echo "You Suck";
   }
 
   function sendResultInfoAsJson($obj)
