@@ -1,3 +1,6 @@
+const urlBase = 'http://primaljet.com/LAMPAPI';
+const extension = 'php';
+
 function validRegister() {
     let firstname = document.getElementById("rfirst").value;
     let lastname = document.getElementById("rlast").value;
@@ -42,7 +45,7 @@ function validRegister() {
     register()
 }
 
-function validLogin() {
+async function validLogin() {
     let username = document.getElementById("user").value;
     let password = document.getElementById("password").value;
 
@@ -68,13 +71,20 @@ function validLogin() {
         return false;
     }
 
-    login()
+
+    try{
+        const payload = {login: username, password:password}
+        JSON.stringify(payload)
+        const res = await axios.post(urlBase + '/login' + extension, payload)
+        return res
+    }
+
+    catch(e){
+        console.log("Error", e)
+    }
 }
 
-const urlBase = 'http://primaljet.com/LAMPAPI';
-const extension = 'php';
-
-function register() {
+async function register() {
     userID = 0;
     let firstname = document.getElementById("rfirst").value;
     let lastname = document.getElementById("rlast").value;
@@ -113,8 +123,4 @@ function register() {
     catch(err) {
         document.getElementById("loginResult").innerHTML = err.message;
     }
-}
-
-function login() {
-    alert("Login Form Success!")
 }
