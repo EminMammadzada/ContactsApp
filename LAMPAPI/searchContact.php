@@ -1,16 +1,16 @@
 <?php
 // TODO: ensure that regular echos still fit into the json format
   /*
-    User ID is cached in a variable, and the inputs array contains the first name, last name,
+    User ID is cached, and the inputs array contains the first name, last name,
     email, and phone number. This endpoint searches all possible permutations of the inputs
     associated with the current user and returns the sql results as a json array
   */
 
   $inData = getRequestInfo();
-  // search bar data
+  // user input
   $arrayOfInputs = $inData["inputs"];
   // cached data
-  $userID = $inData["userId"];
+  $userID = $inData["userID"];
 
   // establishes connection with mysqli, and errors out if the connection fails
   $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -80,6 +80,7 @@
     {
       youSuck();
     }
+    
     $conn->close();
   }
 
