@@ -1,5 +1,26 @@
+/*  
+    TODO: 
+    1. handle errors better using separate html file
+    2. before going to contacts page from login check if there is a cookie
+
+*/
+
+
+
 const urlBase = 'http://primaljet.com/LAMPAPI';
 const extension = '.php';
+
+function doLogout()
+{
+	if(userID){
+        userID = 0
+        document.cookie = "userID=0; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+    if(recordID){
+        recordID = 0
+        document.cookie = "recordID=0; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
 
 function saveCookie(cookieName,id)
 {
@@ -10,11 +31,73 @@ function saveCookie(cookieName,id)
     document.cookie = cookieName + "=" + id
 }
 
-function doLogout()
+function readCookie()
 {
-	userId = 0;
-	document.cookie = "";
-	window.location.href = "http:primaljet.com/index.html";
+	let userID = -1;
+    let recordID = -1;
+
+	let data = document.cookie;
+	let splits = data.split(",");
+	for(let i = 0; i < splits.length; i++) 
+	{
+		let thisOne = splits[i].trim();
+		let tokens = thisOne.split("=");
+		
+	    if( tokens[0] == "userID" )
+		{
+			userID = parseInt( tokens[1].trim() );
+		}
+
+        else if (tokens[0] == "recordID")
+        {
+            recordID = parseInt(tokens[1].trim())
+        }
+	}
+
+    return [userID, recordID]  
+}
+
+function createContact(firstName, lastName, email, phone){
+    const container = document.querySelector("#results")
+
+    const row = document.createElement("div")
+    row.classList.add("row", "text-center")
+
+    const firstNameCol = document.createElement("div")
+    firstNameCol.classList.add("col")
+    firstNameCol.appendChild(document.createTextNode(firstName))
+
+    const lastNameCol = document.createElement("div")
+    lastNameCol.classList.add("col")
+    lastNameCol.appendChild(document.createTextNode(lastName))
+
+    const emailCol = document.createElement("div")
+    emailCol.classList.add("col")
+    emailCol.appendChild(document.createTextNode(email))
+
+    const phoneCol = document.createElement("div")
+    phoneCol.classList.add("col")
+    phoneCol.appendChild(document.createTextNode(phone))
+
+    const editCol = document.createElement("div")
+    editCol.classList.add("col")
+    const editTag = document.createElement("a")
+    editTag.classList.add("btn", "btn-default", "btn-lg")
+    editTag.href = "edit.html"
+    editTag.type = "button"
+    const itag = document.createElement("i")
+    itag.classList.add("bi", "bi-pencil-square")
+    editTag.appendChild(itag)
+    editCol.appendChild(editTag)
+
+
+    row.appendChild(firstNameCol)
+    row.appendChild(lastNameCol)
+    row.appendChild(emailCol)
+    row.appendChild(phoneCol)
+    row.appendChild(editCol)
+
+    container.appendChild(row)
 }
 
 async function validRegister() {
@@ -58,6 +141,7 @@ async function validRegister() {
     }
 
     try{
+        password = md5(password)
         const payload = {firstName:firstname, lastName:lastname, login:username, password:password}
         const res = await axios.post(urlBase + '/register' + extension, payload)
 
@@ -73,10 +157,51 @@ async function validRegister() {
     }
 
     catch(e){
-        // TODO: handle error better
         console.log("Error happened ugh", e)
     }
 
+}
+
+async function searchContact(){
+    let container = document.getElementById("results")
+    while (container.children.length > 1){
+        container.removeChild(container.lastChild)
+    }
+    
+    let searchquery = document.getElementById("form1").value
+    let splits = searchquery.split(" ")
+    let search = []
+
+    for (let split of splits){
+        search.push(split)
+    }
+
+    if (searchquery == ""){
+        window.alert("Last name cannot be blank");
+        return false;
+    }
+
+    try{
+        const userID = readCookie()[0]
+        const payload = {userID: userID, inputs:search}
+        const res = await axios.post(urlBase + '/searchContact' + extension, payload)
+
+        if (res.data.error != ""){
+            throw new Error(res.data.error) 
+        }
+        else if (res.data.results.length == 0){
+            console.log("nothing found")
+        }
+
+        else{
+            for (let row of res.data.results){
+                createContact(row["firstName"], row["lastName"], row["email"], row["phone"])
+            }
+        }
+    }
+    catch(e){
+        console.log("Error happened, ugh", e)
+    }
 }
 
 async function validLogin() {
@@ -107,6 +232,7 @@ async function validLogin() {
 
 
     try{
+        password = md5(password)
         const payload = {login:username, password:password}
         const res = await axios.post(urlBase + '/login' + extension, payload)
         if (res.data.error != ""){
@@ -125,4 +251,3 @@ async function validLogin() {
         console.log("Error happened ugh", e)
     }
 }
-

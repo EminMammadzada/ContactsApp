@@ -5,12 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- JS -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,16 +14,28 @@
     <title>Contacts</title>
     </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
         <div class="container">
-            <a href="#" class="navbar-brand">PrimalJet</a>
+            <a href="../index.html" class="navbar-brand">
+                <img class="d-inline-block align-top"
+                src="../images/PrimalJetLogo.png" width="30" height="30">
+                PrimalJet
+            </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <button 
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            class="navbar-toggler"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navbar"
+            >
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a href="contact.html" class="nav-link">Contacts</a>
                     </li>
@@ -46,14 +52,14 @@
         <h2>Search for a contact</h2>
         <div class="form-outline">
             <input type="search" id="form1" class="form-control" placeholder="Search"/>
-            <button type="button" class="btn btn-primary" id="search">
+            <button type="button" class="btn btn-primary" id="search" onclick="searchContact()">
                 <i class="bi bi-search"></i>
                 Search
             </button>
         </div>
     </div>
 
-    <div class="container">
+    <div id="results" class="container">
         <div class="row bg-light text-center">
             <div class="col" style="border-bottom:solid; border-color:grey;">
                 First Name
@@ -70,8 +76,43 @@
             <div class="col" style="border-bottom:solid; border-color:grey;">
             </div>
         </div>
+    </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="logoutConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to log out?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button onclick="location.href='../index.html'" type="button" class="btn btn-primary" data-toggle="modal" data-target="logoutConfirm">Logout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JS -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script defer src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="../js/script.js"></script>
+  </body>
+</html>
 
 
+
+<!-- 
         <div class="row text-center">
             <div class="col">
                 John
@@ -130,28 +171,4 @@
                 <a href="edit.html" type="button" class="btn btn-default btn-lg">
                     <i class="bi bi-pencil-square"></i>
                 </a>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="logoutConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Are you sure you want to log out?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button onclick="location.href='../index.html'" type="button" class="btn btn-primary" data-toggle="modal" data-target="logoutConfirm">Logout</button>
-              </div>
-            </div>
-          </div>
-        </div>
-  </body>
-</html>
+            </div> -->
