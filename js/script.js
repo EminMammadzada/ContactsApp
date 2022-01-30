@@ -58,12 +58,18 @@ async function validRegister() {
     }
 
     try{
-        //TODO: ACCOUNT FOR CASES WHEN IT IS NOT VALID
         const payload = {firstName:firstname, lastName:lastname, login:username, password:password}
         const res = await axios.post(urlBase + '/register' + extension, payload)
-        const userID = res.data.id
-        saveCookie("userID", userID)
-        window.location.href = "http://primaljet.com/HTML/contact.html"; 
+
+        if (res.data.error != ""){
+            throw new Error(res.data.error)
+        }
+
+        else{
+            const userID = res.data.id
+            saveCookie("userID", userID)
+            window.location.href = "http://primaljet.com/HTML/contact.html"; 
+        }
     }
 
     catch(e){
@@ -103,9 +109,15 @@ async function validLogin() {
     try{
         const payload = {login:username, password:password}
         const res = await axios.post(urlBase + '/login' + extension, payload)
-        const userID = res.data.id
-        saveCookie("userID", userID)
-        window.location.href = "http://primaljet.com/HTML/contact.html";
+        if (res.data.error != ""){
+            throw new Error(res.data.error)
+        }
+
+        else{
+            const userID = res.data.id
+            saveCookie("userID", userID)
+            window.location.href = "http://primaljet.com/HTML/contact.html";
+        }
         
     }
 
