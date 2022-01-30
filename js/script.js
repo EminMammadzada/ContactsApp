@@ -1,3 +1,7 @@
+// TODO: 
+// 1. handle error better
+
+
 const urlBase = 'http://primaljet.com/LAMPAPI';
 const extension = '.php';
 
@@ -8,6 +12,32 @@ function saveCookie(cookieName,id)
 	date.setTime(date.getTime()+(minutes*60*1000));	
 	// document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
     document.cookie = cookieName + "=" + id
+}
+
+function readCookie()
+{
+	let userID = -1;
+    let recordID = -1;
+
+	let data = document.cookie;
+	let splits = data.split(",");
+	for(let i = 0; i < splits.length; i++) 
+	{
+		let thisOne = splits[i].trim();
+		let tokens = thisOne.split("=");
+		
+	    if( tokens[0] == "userID" )
+		{
+			userID = parseInt( tokens[1].trim() );
+		}
+
+        else if (tokens[0] == "recordID")
+        {
+            recordID = parseInt(tokens[1].trim())
+        }
+	}
+
+    return [userID, recordID]  
 }
 
 async function validRegister() {
@@ -67,10 +97,66 @@ async function validRegister() {
     }
 
     catch(e){
-        // TODO: handle error better
         console.log("Error happened ugh", e)
     }
 
+}
+
+/* {<div class="row text-center">
+            <div class="col">
+                John
+            </div>
+            <div class="col">
+                Smith
+            </div>
+            <div class="col">
+                jsmith@gmail.com
+            </div>
+            <div class="col">
+                123-123-1234
+            </div>
+
+            <div class="col">
+                <a href="edit.html" type="button" class="btn btn-default btn-lg">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+            </div>
+        </div> } */
+
+
+async function searchContact(){
+    let searchquery = document.getElementById("form1").value
+    let splits = searchquery.split(" ")
+    let search = []
+
+    for (let split of splits){
+        search.push(split)
+    }
+
+    if (searchquery == ""){
+        window.alert("Last name cannot be blank");
+        return false;
+    }
+
+    try{
+        const userID = readCookie()[0]
+        const payload = {userID: userID, inputs:search}
+        const res = await axios.post(urlBase + '/searchContact' + extension, payload)
+
+        if (res.data.error != ""){
+            throw new Error(res.data.error) 
+        }
+        else if (res.data.results.length == 0){
+            console.log("nothing found")
+        }
+
+        else{
+            console.log(res.data.results)
+        }
+    }
+    catch(e){
+        console.log("Error happened, ugh", e)
+    }
 }
 
 async function validLogin() {
