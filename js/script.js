@@ -12,14 +12,10 @@ const extension = '.php';
 
 function doLogout()
 {
-	if(userID){
-        userID = 0
+	if(document.cookie.split("=")[1] != ""){
         document.cookie = "userID=0; expires = Thu, 01 Jan 1970 00:00:00 GMT";
     }
-    if(recordID){
-        recordID = 0
-        document.cookie = "recordID=0; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-    }
+    window.location.href = "http://primaljet.com/index.html"; 
 }
 
 function saveCookie(cookieName,id)
