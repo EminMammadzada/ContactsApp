@@ -14,11 +14,12 @@ function doLogout()
 {
 	if(userID){
         userID = 0
+        document.cookie = "userID=0; expires = Thu, 01 Jan 1970 00:00:00 GMT";
     }
     if(recordID){
         recordID = 0
+        document.cookie = "recordID=0; expires = Thu, 01 Jan 1970 00:00:00 GMT";
     }
-    document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 }
 
 function saveCookie(cookieName,id)
