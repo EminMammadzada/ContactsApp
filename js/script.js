@@ -10,13 +10,6 @@ function saveCookie(cookieName,id)
     document.cookie = cookieName + "=" + id
 }
 
-function doLogout()
-{
-	userId = 0;
-	document.cookie = "";
-	window.location.href = "http:primaljet.com/index.html";
-}
-
 async function validRegister() {
     let firstname = document.getElementById("rfirst").value;
     let lastname = document.getElementById("rlast").value;
@@ -58,6 +51,7 @@ async function validRegister() {
     }
 
     try{
+        password = md5(password)
         const payload = {firstName:firstname, lastName:lastname, login:username, password:password}
         const res = await axios.post(urlBase + '/register' + extension, payload)
 
@@ -107,6 +101,7 @@ async function validLogin() {
 
 
     try{
+        password = md5(password)
         const payload = {login:username, password:password}
         const res = await axios.post(urlBase + '/login' + extension, payload)
         if (res.data.error != ""){
