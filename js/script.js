@@ -1,5 +1,10 @@
-// TODO: 
-// 1. handle error better
+/*  
+    TODO: 
+    1. handle errors better using separate html file
+    2. display searchResults in proper columns
+
+*/
+
 
 
 const urlBase = 'http://primaljet.com/LAMPAPI';
@@ -38,6 +43,49 @@ function readCookie()
 	}
 
     return [userID, recordID]  
+}
+
+function createContact(firstName, lastName, email, phone){
+    const container = document.querySelector("#results")
+
+    const row = document.createElement("div")
+    row.classList.add("row", "text-center")
+
+    const firstNameCol = document.createElement("div")
+    firstNameCol.classList.add("col")
+    firstNameCol.appendChild(document.createTextNode(firstName))
+
+    const lastNameCol = document.createElement("div")
+    lastNameCol.classList.add("col")
+    lastNameCol.appendChild(document.createTextNode(lastName))
+
+    const emailCol = document.createElement("div")
+    emailCol.classList.add("col")
+    emailCol.appendChild(document.createTextNode(email))
+
+    const phoneCol = document.createElement("div")
+    phoneCol.classList.add("col")
+    phoneCol.appendChild(document.createTextNode(phone))
+
+    const editCol = document.createElement("div")
+    editCol.classList.add("col")
+    const editTag = document.createElement("a")
+    editTag.classList.add("btn", "btn-default", "btn-lg")
+    editTag.href = "edit.html"
+    editTag.type = "button"
+    const itag = document.createElement("i")
+    itag.classList.add("bi", "bi-pencil-square")
+    editTag.appendChild(itag)
+    editCol.appendChild(editTag)
+
+
+    row.appendChild(firstNameCol)
+    row.appendChild(lastNameCol)
+    row.appendChild(emailCol)
+    row.appendChild(phoneCol)
+    row.appendChild(editCol)
+
+    container.appendChild(row)
 }
 
 async function validRegister() {
@@ -102,29 +150,12 @@ async function validRegister() {
 
 }
 
-/* {<div class="row text-center">
-            <div class="col">
-                John
-            </div>
-            <div class="col">
-                Smith
-            </div>
-            <div class="col">
-                jsmith@gmail.com
-            </div>
-            <div class="col">
-                123-123-1234
-            </div>
-
-            <div class="col">
-                <a href="edit.html" type="button" class="btn btn-default btn-lg">
-                    <i class="bi bi-pencil-square"></i>
-                </a>
-            </div>
-        </div> } */
-
-
 async function searchContact(){
+    let container = document.getElementById("results")
+    while (container.children.length > 1){
+        container.removeChild(container.lastChild)
+    }
+    
     let searchquery = document.getElementById("form1").value
     let splits = searchquery.split(" ")
     let search = []
@@ -151,7 +182,9 @@ async function searchContact(){
         }
 
         else{
-            console.log(res.data.results)
+            for (let row of res.data.results){
+                createContact(row["firstName"], row["lastName"], row["email"], row["phone"])
+            }
         }
     }
     catch(e){
