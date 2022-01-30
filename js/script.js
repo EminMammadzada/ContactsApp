@@ -1,7 +1,7 @@
 /*  
     TODO: 
     1. handle errors better using separate html file
-    2. display searchResults in proper columns
+    2. before going to contacts page from login check if there is a cookie
 
 */
 
@@ -9,6 +9,17 @@
 
 const urlBase = 'http://primaljet.com/LAMPAPI';
 const extension = '.php';
+
+function doLogout()
+{
+	if(userID){
+        userID = 0
+    }
+    if(recordID){
+        recordID = 0
+    }
+    document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+}
 
 function saveCookie(cookieName,id)
 {
