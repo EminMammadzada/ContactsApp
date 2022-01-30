@@ -13,27 +13,39 @@
     <title>Edit</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-            <div class="container">
-                <a href="#" class="navbar-brand">PrimalJet</a>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <div class="container">
+            <a href="../index.html" class="navbar-brand">
+                <img class="d-inline-block align-top"
+                src="../images/PrimalJetLogo.png" width="30" height="30">
+                PrimalJet
+            </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <button 
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            class="navbar-toggler"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navbar"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link">Contacts</a>
-                        </li>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contacts</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a href="#logout" class="nav-link">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+                    <li class="nav-item">
+                        <a href="#logoutConfirm" class="nav-link" data-toggle=modal data-target="#logoutConfirm" onclick="doLogout()">Logout</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
         <h2 class="text-center">Edit Contact Info</h2>
         <div class="container">
@@ -62,18 +74,19 @@
                     <input type="input" id="email" class="form-control" value="999-999-9991"/>
                 </div>
             </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <a href="contact.html" type="button" class="btn btn-secondary col-sm-12 col-md-10" id="cancel">
+                            Cancel
+                        </a>
+                    </div>
 
-            <div class="row">
-                <div class="col">
-                    <a href="contact.html" type="button" class="btn btn-secondary col-md-4" id="cancel">
-                        Cancel
-                    </a>
-                </div>
-
-                <div class="col">
-                    <button type="button" class="btn btn-primary col-md-4 ml-auto" id="save">
-                        Save Changes
-                    </button>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary col-sm-12 col-md-10 float-right" id="save">
+                            Save Changes
+                        </button>
+                    </div>
                 </div>
             </div>
     </div>
@@ -86,5 +99,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    <script defer src="../js/script.js"></script>
+</body>
 </html>
