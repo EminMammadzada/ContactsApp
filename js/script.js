@@ -1,7 +1,23 @@
 const urlBase = 'http://primaljet.com/LAMPAPI';
-const extension = 'php';
+const extension = '.php';
 
-function validRegister() {
+function saveCookie(cookieName,id)
+{
+	let minutes = 20;
+	let date = new Date();
+	date.setTime(date.getTime()+(minutes*60*1000));	
+	// document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+    document.cookie = cookieName + "=" + id
+}
+
+function doLogout()
+{
+	userId = 0;
+	document.cookie = "";
+	window.location.href = "http:primaljet.com/index.html";
+}
+
+async function validRegister() {
     let firstname = document.getElementById("rfirst").value;
     let lastname = document.getElementById("rlast").value;
     let username = document.getElementById("ruser").value;
@@ -41,8 +57,20 @@ function validRegister() {
         return false;
     }
 
-    alert("Registration Form Success!")
-    register()
+    try{
+        //TODO: ACCOUNT FOR CASES WHEN IT IS NOT VALID
+        const payload = {firstName:firstname, lastName:lastname, login:username, password:password}
+        const res = await axios.post(urlBase + '/register' + extension, payload)
+        const userID = res.data.id
+        saveCookie("userID", userID)
+        window.location.href = "http://primaljet.com/HTML/contact.html"; 
+    }
+
+    catch(e){
+        // TODO: handle error better
+        console.log("Error happened ugh", e)
+    }
+
 }
 
 async function validLogin() {
@@ -73,54 +101,16 @@ async function validLogin() {
 
 
     try{
-        const payload = {login: username, password:password}
-        JSON.stringify(payload)
+        const payload = {login:username, password:password}
         const res = await axios.post(urlBase + '/login' + extension, payload)
-        return res
+        const userID = res.data.id
+        saveCookie("userID", userID)
+        window.location.href = "http://primaljet.com/HTML/contact.html";
+        
     }
 
     catch(e){
-        console.log("Error", e)
+        console.log("Error happened ugh", e)
     }
 }
 
-async function register() {
-    userID = 0;
-    let firstname = document.getElementById("rfirst").value;
-    let lastname = document.getElementById("rlast").value;
-    let username = document.getElementById("ruser").value;
-    let password = document.getElementById("rpassword").value;
-
-    document.getElementById("registerResult").innerHTML = "";
-
-    let temp = {firstname:firstname, lastname:lastname, login:username, password:password};
-    let jsonPayload = JSON.stringify( tmp );
-
-    let url = urlBase + '/register.' + extension;
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-    
-
-    try {
-        xhr.onreadystatechange = function() {
-            
-            if (this.readyState == 4 && this.status == 200) {
-                
-                let jsonobject = JSON.parse( xhr.responseText );
-                userID = jsonObject.ID;
-
-                firstname = jsonobject.firstname;
-                lastname = jsonobject.lastname;
-
-                window.location.href = "contact.html";
-            }
-        };
-        xhr.send(jsonPayload);
-    }
-    catch(err) {
-        document.getElementById("loginResult").innerHTML = err.message;
-    }
-}
