@@ -14,30 +14,37 @@
     </head>
   <body>
 
-    <!-- Navigate Bar -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <img src="images/PrimalJetLogo.png" href="index.html" height="60px" class="mr-3">
-            <a href="#" class="navbar-brand">PrimalJet</a>
+                <a href="/index.html" class="navbar-brand">
+                <img class="d-inline-block align-center mr-1"
+                src="/images/PrimalJetLogo.png"  height="40px">
+                PrimalJet
+            </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <button 
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            class="navbar-toggler"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navbar"
+            >
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">About Us</a>
+                        <a href="index.html" class="nav-link active">Home</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a href="#" class="nav-link">About Us</a>
+                    </li> -->
                     
                 </ul>
-                <div>
-                    <a class="btn btn-md btn-primary mr-2" type="button" href="HTML/login.html" >Login</a>
-                    <a class="btn btn-md btn-outline-primary" type="button" href="HTML/register.html">Sign Up!</a>
-                </div>
             </div>
         </div>
     </nav>
@@ -47,8 +54,8 @@
         <h4 class="pt-5">Manage your contacts, quick and easy.</h4>
         <h1 class="display-1">PrimalJet</h1>
         <div>
-            <a class="btn btn-lg btn-primary mr-2 col-2" type="button" href="HTML/login.html" >Login</a>
-            <a class="btn btn-lg btn-outline-primary col-2" type="button" href="HTML/register.html">Sign Up!</a>
+            <a class="btn btn-lg btn-primary mr-2 " type="button" href="HTML/login.html" >Login</a>
+            <a class="btn btn-lg btn-outline-primary " type="button" href="HTML/register.html">Sign Up!</a>
         </div>
 
     </div>

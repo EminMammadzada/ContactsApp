@@ -14,40 +14,40 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <div class="container">
-            <a href="../index.html" class="navbar-brand">
-                <img class="d-inline-block align-top"
-                src="../images/PrimalJetLogo.png" width="30" height="30">
-                PrimalJet
-            </a>
-
-            <button 
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNav"
-            class="navbar-toggler"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navbar"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">Contacts</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#logoutConfirm" class="nav-link" data-toggle=modal data-target="#logoutConfirm" onclick="doLogout()">Logout</a>
-                    </li>
-                </ul>
+            <div class="container">
+                <a href="../index.html" class="navbar-brand">
+                    <img class="d-inline-block align-center mr-1"
+                    src="../images/PrimalJetLogo.png"  height="40px">
+                    PrimalJet
+                </a>
+                
+                <button 
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                class="navbar-toggler"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navbar"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link active">Contacts</a>
+                        </li>
+    
+                        <li class="nav-item">
+                            <a href="#logoutConfirm" class="nav-link" data-toggle=modal data-target="#logoutConfirm" onclick="doLogout()">Logout</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-        <h2 class="text-center">Edit Contact Info</h2>
+        <h2 class="text-center mt-3">Edit Contact Info</h2>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -56,25 +56,25 @@
                 </div>
 
                 <div class="col">
-                    <label>First Name</label>
+                    <label>Last Name</label>
                     <input type="input" id="lname" class="form-control" value="Leinecker"/>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-1">
                 <div class="col">
                     <label>Email</label>
                     <input type="input" id="email" class="form-control" value="rickl@gmail.com"/>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mt-1">
                 <div class="col">
                     <label>Phone</label>
                     <input type="input" id="email" class="form-control" value="999-999-9991"/>
                 </div>
             </div>
-            <div class="container">
+            <div class="container mt-3">
                 <div class="row">
                     <div class="col">
                         <a href="contact.html" type="button" class="btn btn-secondary col-sm-12 col-md-10" id="cancel">

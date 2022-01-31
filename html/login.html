@@ -18,27 +18,34 @@
     <!-- Navigate Bar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <img src="../images/PrimalJetLogo.png" href="../index.html" height="60px" class="mr-3">
-            <a href="../index.html" class="navbar-brand">PrimalJet</a>
+                <a href="../index.html" class="navbar-brand">
+                <img class="d-inline-block align-center mr-1"
+                src="../images/PrimalJetLogo.png"  height="40px">
+                PrimalJet
+            </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <button 
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            class="navbar-toggler"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navbar"
+            >
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a href="../index.html" class="nav-link">Home</a>
-                    </li>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">About Us</a>
+                        <a href="../index.html" class="nav-link active">Home</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a href="#" class="nav-link">About Us</a>
+                    </li> -->
                     
                 </ul>
-                <div>
-                    <a class="btn btn-md btn-primary mr-2" type="button" href="login.html" >Login</a>
-                    <a class="btn btn-md btn-outline-primary" type="button" href="register.html">Sign Up!</a>
-                </div>
             </div>
         </div>
     </nav>
@@ -46,13 +53,14 @@
     <!-- Main Page Heading Block -->
     <div class="container">
         <div class="row">
-            <div class="col align-self-center">
-                <h1 class="text-center pt-5">Welcome Back!</h1>
+            <div class="col align-self-center col-8 mx-auto">
+                <h1 class="text-center pt-3">Welcome Back!</h1>
                 <div id="loginForm">
-                    <div class="form-group col-4 mx-auto pt-2" >
-                        <label class="mr-auto" for="user" >Username</label>
+                    <div class="form-group mx-auto pt-2" >
+                        <label>Username</label>
                         <input type="text" class="form-control" id="user"  placeholder="Enter username">
-                        <label class="mr-auto mt-1" for="password" >Password</label>
+
+                        <label class="mt-1">Password</label>
                         <input type="password" class="form-control" id="password"  placeholder="Enter password">
 
                         <button type="button" id="registerButton" class="buttons btn btn-md btn-primary mt-3 col-12" onclick="validLogin()">Login!</button>
