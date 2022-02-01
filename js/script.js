@@ -2,7 +2,6 @@
     TODO: 
     1. handle errors better using separate html file
     2. before going to contacts page from login check if there is a cookie
-
 */
 
 
@@ -241,6 +240,58 @@ async function validLogin() {
             window.location.href = "http://primaljet.com/HTML/contact.html";
         }
         
+    }
+
+    catch(e){
+        console.log("Error happened ugh", e)
+    }
+}
+
+async function addContact() {
+    let firstname = document.getElementById("afname").value;
+    let lastname = document.getElementById("alname").value;
+    let email = document.getElementById("aemail").value;
+    let phone = document.getElementById("aphone").value;
+
+    const isRequired = value => value === '' ? false : true;
+
+    if (!isRequired(firstname)) {
+        window.alert("First name cannot be blank.");
+        firstname.focus();
+        return false;
+    }
+
+    if (!isRequired(lastname)) {
+        window.alert("Last name cannot be blank");
+        lastname.focus();
+        return false;
+    }
+
+    if (!isRequired(email)) {
+        window.alert("Email cannot be blank.");
+        email.focus();
+        return false;
+    }
+
+    if (!isRequired(phone)) {
+        window.alert("Phone cannot be blank");
+        phone.focus();
+        return false;
+    }
+
+    try{
+        const userID = readCookie()[0]
+        const payload = {userID:userID, firstName:firstname, lastName:lastname, email:email, phone:phone}
+        const res = await axios.post(urlBase + '/addContact' + extension, payload)
+
+        if (res.data.error != ""){
+            throw new Error(res.data.error)
+        }
+
+        else{
+            window.location.href = "http://primaljet.com/HTML/contact.html"; 
+            console.log("contact was created successfully")
+        }
     }
 
     catch(e){

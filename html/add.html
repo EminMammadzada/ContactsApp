@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <title>Add Contact</title>
     </head>
     <body>
@@ -52,26 +54,26 @@
             <div class="row">
                 <div class="col">
                     <label>First Name</label>
-                    <input type="input" id="fname" class="form-control" placeholder="John"/>
+                    <input type="input" id="afname" class="form-control" placeholder="John"/>
                 </div>
 
                 <div class="col">
                     <label>Last Name</label>
-                    <input type="input" id="lname" class="form-control" placeholder="Smith"/>
+                    <input type="input" id="alname" class="form-control" placeholder="Smith"/>
                 </div>
             </div>
 
             <div class="row mt-1">
                 <div class="col">
                     <label>Email</label>
-                    <input type="input" id="email" class="form-control" placeholder="jsmith@gmail.com"/>
+                    <input type="input" id="aemail" class="form-control" placeholder="jsmith@gmail.com"/>
                 </div>
             </div>
 
             <div class="row mt-1">
                 <div class="col">
                     <label>Phone</label>
-                    <input type="input" id="email" class="form-control" placeholder="1243-456-7890"/>
+                    <input type="input" id="aphone" class="form-control" placeholder="1243-456-7890"/>
                 </div>
             </div>
             <div class="container mt-3">
@@ -83,7 +85,7 @@
                     </div>
 
                     <div class="col">
-                        <button type="button" class="btn btn-primary col-sm-12 col-md-10 float-right" id="save">
+                        <button type="button" class="btn btn-primary col-sm-12 col-md-10 float-right" id="save" onclick="addContact()">
                             Save Changes
                         </button>
                     </div>
