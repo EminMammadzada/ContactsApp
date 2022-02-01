@@ -31,7 +31,7 @@
     // if the RecordID for the contact exists, return it
     if ($row = $result->fetch_assoc())
     {
-      returnWithInfo($row['ID']);
+      returnWithInfo($row['ID'], $row["FirstName"], $row["LastName"], $row["Email"], $row["Phone"]);
     }
     // if the RecordID for the contact doesn't exist, error out
     else
@@ -60,9 +60,9 @@
     sendResultInfoAsJson($retValue);
   }
 
-  function returnWithInfo($recordID)
+  function returnWithInfo($recordID, $firstName, $lastName, $email, $phone)
   {
-    $retValue = '{"recordID":' . $recordID . '","error":""}';
+    $retValue = '{"recordID": "' . $recordID . '", "firstName": "' . $firstName . '", "lastName": "' . $lastName . '", "email":"' . $email . '", "phone":"' . $phone . '","error":""}';
     sendResultInfoAsJson($retValue);
   }
 ?>
