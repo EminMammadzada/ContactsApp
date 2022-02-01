@@ -3,10 +3,7 @@
     1. handle errors better using separate html file
     2. before going to contacts page from login check if there is a cookie
     3. go to edit page only if we have recordID
-    4. destroy all cookies forever as soon as logout is pressed
     5. send info to edit page from contact page
-    6. create separate cookies
-    7. update creates a new user for some reason instead of updating the user
 */
 
 
@@ -16,10 +13,15 @@ const extension = '.php';
 
 function doLogout()
 {
-	if(document.cookie.split("=")[1] != ""){
-        document.cookie = "";
-    }
+    removeCookies(true)
     window.location.href = "http://primaljet.com/index.html"; 
+}
+
+function removeCookies(deleteBoth){
+    document.cookie = "recordID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"
+    if (deleteBoth){
+        document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+    }
 }
 
 function saveCookie(cookieName,id)
@@ -27,47 +29,28 @@ function saveCookie(cookieName,id)
 	let minutes = 10;
 	let date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));	
-	// document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
-
-    if (document.cookie == ""){
-        document.cookie = cookieName + "=" + id
-    }
-    else{
-        let res = readCookie()
-        if (!res[1]){
-            document.cookie = document.cookie + "," + cookieName + "=" + id
-        }
-
-        else{
-            document.cookie.split(",")[1].split("=")[1] = id
-        }
-    }
+    const expires = "expires=" + date.toUTCString();
+    document.cookie =  cookieName + "=" + id + "; " + expires + "; path=/";
 }
 
-function readCookie()
-{
-	let userID = -1;
-    let recordID = -1;
-
-	let data = document.cookie;
-	let splits = data.split(",");
-	for(let i = 0; i < splits.length; i++) 
-	{
-		let thisOne = splits[i].trim();
-		let tokens = thisOne.split("=");
-		
-	    if( tokens[0] == "userID" )
-		{
-			userID = parseInt( tokens[1].trim() );
-		}
-
-        else if (tokens[0] == "recordID")
-        {
-            recordID = parseInt(tokens[1].trim())
+function getCookie(name) {
+    // Split cookie string and get all individual name=value pairs in an array
+    var cookieArr = document.cookie.split(";");
+    
+    // Loop through the array elements
+    for(var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+        
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
+        if(name == cookiePair[0].trim()) {
+            // Decode the cookie value and return
+            return decodeURIComponent(cookiePair[1]);
         }
-	}
-
-    return [userID, recordID]  
+    }
+    
+    // Return null if not found
+    return null;
 }
 
 function createContact(firstName, lastName, email, phone){
@@ -125,7 +108,7 @@ function createContact(firstName, lastName, email, phone){
         const firstNameEle = lastnameEle.previousElementSibling
 
         try{
-            const userID = readCookie()[0]
+            const userID = getCookie("userID")
             payload = {userID: userID, firstName:firstNameEle.textContent, lastName:lastnameEle.textContent, email: emailEle.textContent, phone: phoneEle.textContent}
             const res = await axios.post(urlBase + '/loadContact' + extension, payload)
 
@@ -238,7 +221,7 @@ async function searchContact(){
     }
 
     try{
-        const userID = readCookie()[0]
+        const userID = getCookie("userID")
         const payload = {userID: userID, inputs:search}
         const res = await axios.post(urlBase + '/searchContact' + extension, payload)
 
@@ -341,7 +324,7 @@ async function addContact() {
     }
 
     try{
-        const userID = readCookie()[0]
+        const userID = getCookie("userID")
         const payload = {userID:userID, firstName:firstname, lastName:lastname, email:email, phone:phone}
         const res = await axios.post(urlBase + '/addContact' + extension, payload)
 
@@ -365,7 +348,7 @@ async function deleteContact(){
     let result = window.confirm("Are you sure you want to delete this contact?")
     if (result){
         try{
-            const recordID = readCookie()[1]
+            const recordID = getCookie("recordID")
             const payload = {recordID:recordID}
             const res = await axios.post(urlBase + '/deleteContact' + extension, payload)
 
@@ -382,6 +365,8 @@ async function deleteContact(){
         catch(e){
             console.log("Error happened ugh", e)
         }
+
+        removeCookies(false)
     }
 }
 
@@ -395,30 +380,26 @@ async function updateContact(){
 
     if (!isRequired(firstname)) {
         window.alert("First name cannot be blank.");
-        firstname.focus();
         return false;
     }
 
     if (!isRequired(lastname)) {
         window.alert("Last name cannot be blank");
-        lastname.focus();
         return false;
     }
 
     if (!isRequired(email)) {
         window.alert("Email cannot be blank.");
-        email.focus();
         return false;
     }
 
     if (!isRequired(phone)) {
         window.alert("Phone cannot be blank");
-        phone.focus();
         return false;
     }
 
     try{
-        const recordID = readCookie()[1]
+        const recordID = getCookie("recordID")
         const payload = {recordID:recordID, firstName:firstname, lastName:lastname, email:email, phone:phone}
         const res = await axios.post(urlBase + '/updateContact' + extension, payload)
 
@@ -435,6 +416,5 @@ async function updateContact(){
     catch(e){
         console.log("Error happened ugh", e)
     }
-
       
 }
