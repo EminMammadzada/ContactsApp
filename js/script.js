@@ -3,7 +3,6 @@
     1. handle errors better using separate html file
     2. before going to contacts page from login check if there is a cookie
     3. go to edit page only if we have recordID
-    5. send info to edit page from contact page
 */
 
 
