@@ -82,21 +82,21 @@
 
     <script>
         if(document.cookie != ""){
-
+            
             const div = document.createElement("div")
             div.classList.add("col-12", "text-center", "mx-auto", "mt-5")
 
             const video = document.createElement("video")
-            video.width = 320
-            video.height = 240
+            video.width = 420
+            video.height = 340
             video.autoplay = true
             video.controls = true
             video.loop = true
             video.muted = true
-        
+
             const source = document.createElement("source")
-            source.src = "images/movie.webm"
-            source.type = "video/webm"
+            source.src = "images/movie.mp4"
+            source.type = "video/mp4"
             video.appendChild(source)
 
             video.append("Your browser does not support the video tag, but NEVER GONNA GIVE U UP...")

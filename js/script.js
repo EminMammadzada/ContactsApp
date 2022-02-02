@@ -332,7 +332,6 @@ async function addContact() {
 
         else{
             window.location.href = "http://primaljet.com/HTML/contact.html"; 
-            console.log("contact was created successfully")
         }
     }
 
@@ -356,7 +355,6 @@ async function deleteContact(){
 
             else{
                 window.location.href = "http://primaljet.com/HTML/contact.html"; 
-                console.log("contact was deleted successfully")
             }
         }
 
@@ -407,7 +405,6 @@ async function updateContact(){
 
         else{
             window.location.href = "http://primaljet.com/HTML/contact.html"; 
-            console.log("contact was updated successfully")
         }
     }
 
