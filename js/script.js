@@ -1,10 +1,3 @@
-/*  
-    TODO: 
-    1. handle errors better using separate html file
-*/
-
-
-
 const urlBase = 'http://primaljet.com/LAMPAPI';
 const extension = '.php';
 
@@ -226,7 +219,15 @@ async function searchContact(){
             throw new Error(res.data.error) 
         }
         else if (res.data.results.length == 0){
-            console.log("nothing found")
+
+            const div = document.createElement("div")
+            div.classList.add("alert", "alert-danger", "fade", "show", "col-6", "text-center", "mx-auto", "mt-5")
+            div.role = "alert"
+            div.append("No such contact exists! Try searching something else")
+
+            document.querySelector("body").appendChild(div)
+
+            setTimeout(()=>div.remove(), 2000)
         }
 
         else{

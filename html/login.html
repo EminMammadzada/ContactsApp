@@ -15,6 +15,13 @@
     </head>
   <body>
 
+    <script>
+        const userID = document.cookie.split(";")[0]
+        if (userID){
+            window.location.href = "http://primaljet.com/HTML/contact.html"
+        }
+    </script>
+
     <!-- Navigate Bar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
@@ -41,10 +48,6 @@
                     <li class="nav-item">
                         <a href="../index.html" class="nav-link active">Home</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link">About Us</a>
-                    </li> -->
-                    
                 </ul>
             </div>
         </div>
@@ -67,7 +70,7 @@
                         <span id="loginResult"></span>
                     </div>
                 </div>
-                <p class="text-center">Dont have an account? <a class="link-primary" href="register.html">Create an account</a>.</p>
+                <p class="text-center">Don't have an account? <a class="link-primary" href="register.html">Create an account</a>.</p>
             </div>
         </div>
     </div>
