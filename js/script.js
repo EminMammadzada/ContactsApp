@@ -216,7 +216,7 @@ async function searchContact(){
     }
 
     if (searchquery == ""){
-        window.alert("Last name cannot be blank");
+        window.alert("Search field cannot be blank");
         return false;
     }
 

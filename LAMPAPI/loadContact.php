@@ -23,7 +23,7 @@
   else
   {
     // Grabs the RecordID associated with the name, email, phone, and UserID
-    $stmt = $conn->prepare("SELECT ID FROM Records WHERE FirstName=? AND LastName=? AND Email=? AND Phone=? AND UserID=?");
+    $stmt = $conn->prepare("SELECT * FROM Records WHERE FirstName=? AND LastName=? AND Email=? AND Phone=? AND UserID=?");
     $stmt->bind_param("sssss", $firstName, $lastName, $email, $phone, $userID);
     $stmt->execute();
     $result = $stmt->get_result();
