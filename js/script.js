@@ -113,7 +113,7 @@ function createContact(firstName, lastName, email, phone){
                 const email = res.data.email
                 const phone = res.data.phone
                 saveCookie("recordID", recordID)
-                window.location.href = "http://primaljet.com/HTML/edit.html?name="+name+"&lname="+lname+"&email="+email+"&phone="+phone; 
+                window.location.href = "http://primaljet.com/html/edit.html?name="+name+"&lname="+lname+"&email="+email+"&phone="+phone; 
             }
 
         }
@@ -181,7 +181,7 @@ async function validRegister() {
         else{
             const userID = res.data.id
             saveCookie("userID", userID)
-            window.location.href = "http://primaljet.com/HTML/contact.html"; 
+            window.location.href = "http://primaljet.com/html/contact.html"; 
         }
     }
 
@@ -279,7 +279,7 @@ async function validLogin() {
         else{
             const userID = res.data.id
             saveCookie("userID", userID)
-            window.location.href = "http://primaljet.com/HTML/contact.html";
+            window.location.href = "http://primaljet.com/html/contact.html";
         }
         
     }
@@ -331,7 +331,7 @@ async function addContact() {
         }
 
         else{
-            window.location.href = "http://primaljet.com/HTML/contact.html"; 
+            window.location.href = "http://primaljet.com/html/contact.html"; 
         }
     }
 
@@ -354,7 +354,7 @@ async function deleteContact(){
             }
 
             else{
-                window.location.href = "http://primaljet.com/HTML/contact.html"; 
+                window.location.href = "http://primaljet.com/html/contact.html"; 
             }
         }
 
@@ -404,7 +404,7 @@ async function updateContact(){
         }
 
         else{
-            window.location.href = "http://primaljet.com/HTML/contact.html"; 
+            window.location.href = "http://primaljet.com/html/contact.html"; 
         }
     }
 
