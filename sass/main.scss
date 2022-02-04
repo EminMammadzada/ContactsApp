@@ -1,0 +1,18 @@
+// custom variables
+$primary: #4EB9E9;
+$secondary: #e97f4e;
+$success: #118744;
+$body-bg: #f8f8ff;
+
+$card-box-shadow: true;
+$card-border-radius: 7px;
+
+$navbar-dark-hover-color: #4EB9E9;
+
+$enable-shadows: true;
+$enable-rounded: true;
+
+
+
+// import bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap.scss';

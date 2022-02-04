@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/sass/main.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -17,11 +17,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-                <a href="/index.html" class="navbar-brand">
-                <img class="d-inline-block align-center mr-1"
-                src="/images/PrimalJetLogo.png"  height="40px">
-                PrimalJet
-            </a>
+                <a href="/index.html" class="nav-link fw-bold fs-4 mb-1">PrimalJet</a>
 
             <button 
             type="button"
@@ -30,15 +26,14 @@
             class="navbar-toggler"
             aria-controls="navbarNav"
             aria-expanded="false"
-            aria-label="Toggle navbar"
-            >
+            aria-label="Toggle navbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul id="list" class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link active">Home</a>
+                        <a href="index.html" class="nav-link active hover-primary">Home</a>
                     </li>
 
                     <script>
@@ -69,16 +64,68 @@
     </nav>
 
     <!-- Main Page Heading Block -->
-    <div class="col-8 text-center mx-auto">
-        <h4 class="pt-5">Manage your contacts quickly and easily</h4>
-        <h1 class="display-1">PrimalJet</h1>
-        <div>
-            <a class="btn btn-lg btn-primary mr-2 " type="button" href="HTML/login.html" >Login</a>
-            <a class="btn btn-lg btn-outline-primary " type="button" href="HTML/register.html">Sign Up!</a>
-        </div>
 
+    <div class="bg-primary">
+        <div class="container">
+            <div class="align-items-center g-0 row" >
+                <div class="col-xl-5 col-lg-6 col-md-12" >
+                    <div class="py-4 py-lg-0" >
+                        <h1 class="display-1 fw-bold">PrimalJet</h1>
+                        <p class="mb-4 fw-bold "> Managing contact information has never been more simple thanks to PrimalJets
+                            state of the art tools and software to help you stay connected.
+                        </p>
+
+                        <a class="btn btn-success btn-border-radius-lg shadow fw-bold col-xl-4 col-lg-4 col-md-5 col-sm-5 pt-2 pb-2 " type="button" href="/html/login.html" >Login</a>
+                        <a class="btn btn-success btn-border-radius-lg shadow fw-bold col-xl-4 col-lg-4 col-md-5 col-sm-5 pt-2 pb-2" type="button" href="/html/register.html">Sign Up!</a>
+                    </div>
+                </div>
+                <div class="text-lg-end text-center col-xl-7 col-lg-6 col-md-12">
+                    <img src="/images/PrimalJetLogo.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="bg-primary py-5 align-items-around">
+        <div class="container">
+            <div class="d-flex align-items-around justify-content-around g-0 row ">
+                <div class="mb-lg-0 mb-4 col-xl-3 col-lg-4 col-md-6 bg-primary shadow-lg">
+                    <div class="d-flex align-items-center card text-center">
+                        <span class="fs-2 mt-3">
+                            <i class="bi bi-person-plus"></i>
+                        </span>
+                        <div class="ms-3">
+                                <h4 class="mb-0 fw-semi-bold">Add Contacts</h4>
+                                <p class="mb-4">Quickly add new contacts</p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-lg-0 mb-4 col-xl-3 col-lg-4 col-md-6 bg-primary shadow-lg">
+                        <div class="d-flex align-items-center card text-center">
+                            <span class="fs-2 mt-3">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <div class="ms-3">
+                                <h4 class="mb-0 fw-semi-bold">Intelligent Search</h4>
+                                <p class="mb-4">Never struggle finding a contact</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-lg-0 mb-4 col-xl-3 col-lg-4 col-md-6 bg-primary shadow-lg">
+                        <div class="d-flex align-items-center card text-center">
+                            <span class="fs-2 mt-3">
+                                <i class="bi bi-pencil-square"></i>
+                            </span>
+                            <div class="ms-3">
+                                <h4 class="mb-0 fw-semi-bold">Edit Contacts</h4>
+                                <p class="mb-4">Easily change contact information</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <script>
         if(document.cookie != ""){

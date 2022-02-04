@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/sass/main.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -36,11 +36,7 @@
         
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
             <div class="container">
-                <a href="../index.html" class="navbar-brand">
-                    <img class="d-inline-block align-center mr-1"
-                    src="../images/PrimalJetLogo.png"  height="40px">
-                    PrimalJet
-                </a>
+                <a href="../index.html" class="nav-link fw-bold fs-4 mb-1">PrimalJet</a>
                 
                 <button 
                 type="button"
@@ -68,72 +64,78 @@
             </div>
         </nav>
 
-        <h2 class="text-center mt-3">Edit Contact Info</h2>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <label>First Name</label>
-                    <input type="input" id="editFname" class="form-control">
-                </div>
+        <div class="d-flex flex-column container mt-5 ">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-5 col-md-5">
+                    <div class="card shadow-lg">
+                        <div class="card-body">
+                            <h1 class="text-center mb-4 fw-bold">Edit Contact</h1>
+                            <div>
+                                <div class="form-group mx-auto pt-2 px-4" >
+                                    <div class="col">
+                                        <label>First Name</label>
+                                        <input type="input" id="editFname" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm">
+                                    </div>
+                    
+                                    <div class="col">
+                                        <label>Last Name</label>
+                                        <input type="input" id="editLname" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm">
+                                    </div>
 
-                <div class="col">
-                    <label>Last Name</label>
-                    <input type="input" id="editLname" class="form-control">
-                </div>
-            </div>
+                                    <div class="row mt-1">
+                                        <div class="col">
+                                            <label>Email</label>
+                                            <input type="input" id="editEmail" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm">
+                                        </div>
+                                    </div>
+                        
+                                    <div class="row mt-1">
+                                        <div class="col">
+                                            <label>Phone</label>
+                                            <input type="input" id="editPhone" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm">
+                                        </div>
+                                    </div>
 
-            <div class="row mt-1">
-                <div class="col">
-                    <label>Email</label>
-                    <input type="input" id="editEmail" class="form-control">
-                </div>
-            </div>
+                                    <script>
+                                        const params = new URLSearchParams(window.location.search)
+                                        if (!params){
+                                            console.log("error, no parameters")
+                                            window.location.href = "http://primaljet.com/contact.html"
+                                        }
+                                        else{
+                                            document.getElementById("editFname").value = params.get("name")
+                                            document.getElementById("editLname").value = params.get("lname")
+                                            document.getElementById("editEmail").value = params.get("email")
+                                            document.getElementById("editPhone").value = params.get("phone")
+                                        }
+                                    </script>
 
-            <div class="row mt-1">
-                <div class="col">
-                    <label>Phone</label>
-                    <input type="input" id="editPhone" class="form-control">
-                </div>
-            </div>
+                                    <button type="button" class="btn buttons btn-success btn-border-radius-lg shadow fw-bold col-12 mt-3 mb-3" id="save" onclick="updateContact()">
+                                        Save Changes
+                                    </button>
 
-            <script>
-                const params = new URLSearchParams(window.location.search)
-                if (!params){
-                    console.log("error, no parameters")
-                    window.location.href = "http://primaljet.com/contact.html"
-                }
-                else{
-                    document.getElementById("editFname").value = params.get("name")
-                    document.getElementById("editLname").value = params.get("lname")
-                    document.getElementById("editEmail").value = params.get("email")
-                    document.getElementById("editPhone").value = params.get("phone")
-                }
-            </script>
-
-
-            <div class="container mt-3">
-                <div class="row">
-                    <div class="col">
-                        <a href="contact.html" type="button" class="btn btn-secondary col-sm-12 col-md-10" id="cancel" onclick="removeCookies(false)">
-                            Cancel
-                        </a>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="contact.html" type="button" class="btn buttons btn-outline-success btn-border-radius-lg shadow fw-bold col-12 mt-3 mb-3" id="cancel" onclick="removeCookies(false)">
+                                                Cancel
+                                            </a>
+                                        </div>
+                    
+                                        <div class="col">
+                                            <a type="button" class="btn buttons btn-secondary  text-white btn-border-radius-lg shadow fw-bold col-12 mt-3 mb-3" id="cancel" onclick="deleteContact()">
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col">
-                        <a type="button" class="btn btn-danger col-sm-12 col-md-10" id="cancel" onclick="deleteContact()">
-                            Delete
-                        </a>
-                    </div>
-
-                    <div class="col">
-                        <button type="button" class="btn btn-primary col-sm-12 col-md-10 float-right" id="save" onclick="updateContact()">
-                            Save Changes
-                        </button>
-                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Modal -->
+        <!-- Modal -->
         <div class="modal fade" id="logoutConfirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -153,9 +155,6 @@
             </div>
           </div>
     </div>
-
-    
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

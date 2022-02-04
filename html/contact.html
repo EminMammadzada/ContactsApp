@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/sass/main.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -27,11 +27,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
         <div class="container">
-            <a href="../index.html" class="navbar-brand">
-                <img class="d-inline-block align-center mr-1"
-                src="../images/PrimalJetLogo.png"  height="40px">
-                PrimalJet
-            </a>
+            <a href="../index.html" class="nav-link fw-bold fs-4 mb-1">PrimalJet</a>
             
             <button 
             type="button"
@@ -48,7 +44,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="contact.html" class="nav-link active">Contacts</a>
+                        <a href="contact.html" class="nav-link active hover-primary">Contacts</a>
                     </li>
 
                     <li class="nav-item">
@@ -59,39 +55,51 @@
         </div>
     </nav>
 
-    <div class="container text-center mt-3">
-        <h2>Search for a contact</h2>
-        <div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Search"/>
-            <button type="button" class="btn btn-primary mt-3 mb-3" id="search" onclick="searchContact()">
-                <i class="bi bi-search"></i>
-                Search
-            </button>
+    <div class="d-flex flex-column container mt-5">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-5 col-md-5">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4 mt-4 fw-bold">Search Contacts</h1>
+                        <div id="registerForm">
+                            <div class="form-group mx-auto pt-2 px-4" >
+                                <input type="search" id="form1" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm" placeholder="Start typing.."/>
+                                <button type="button" class="btn buttons btn-success btn-border-radius-lg shadow fw-bold col-12 mt-3 mb-2" id="search" onclick="searchContact()">
+                                    <span>
+                                        <i class="bi bi-search"></i>
+                                    </span>
+                                Search
+                            </button>
+                            </div>
+                        </div>
+                        <p class="text-center">or</p>
+                        <div class="mx-auto px-4">
+                            <button type="button" class="btn buttons btn-success btn-border-radius-lg shadow fw-bold col-12 mb-3" id="search" onclick="location.href='add.html';">
+                                <span>
+                                    <i class="bi bi-person-plus-fill"></i>
+                                </span>
+                                Add Contact
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <button type="button" class="btn btn-primary mt-3 mb-3" id="search" onclick="location.href='add.html';">
-                Add Contact
-                <i class="bi bi-person-plus-fill"></i>
-            </button>
-        </div>
-    </div>
-
-    <div id="results" class="container">
+    <div id="results" class="container mt-5">
         <div class="row bg-light text-center">
             <div class="col" style="border-bottom:solid; border-color:grey;">
-                First Name
+                <p class="fw-bold fs-5">First Name</p>
             </div>
             <div class="col" style="border-bottom:solid; border-color:grey;">
-                Last Name
+                <p class="fw-bold fs-5">Last Name</p>
             </div>
             <div class="col" style="border-bottom:solid; border-color:grey;">
-                Email
+                <p class="fw-bold fs-5">Email</p>
             </div>
             <div class="col" style="border-bottom:solid; border-color:grey;">
-                Phone
+                <p class="fw-bold fs-5">Phone</p>
             </div>
             <div class="col" style="border-bottom:solid; border-color:grey;">
             </div>
