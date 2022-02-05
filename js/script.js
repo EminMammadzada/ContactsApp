@@ -332,29 +332,52 @@ async function addContact() {
     let email = document.getElementById("aemail").value;
     let phone = document.getElementById("aphone").value;
 
+    let success = true;
+
     const isRequired = value => value === '' ? false : true;
 
     if (!isRequired(firstname)) {
         //window.alert("First name cannot be blank.");
+        document.getElementById("afname-error-msg").innerHTML = 'First name cannot be blank.'
         //firstname.focus();
-        return false;
+        success = false;
+    }else
+    {
+        document.getElementById("afname-error-msg").innerHTML = ''
     }
 
     if (!isRequired(lastname)) {
         //window.alert("Last name cannot be blank");
+        document.getElementById("alname-error-msg").innerHTML = 'Last name cannot be blank.'
         //lastname.focus();
-        return false;
+        success = false;
+    }else
+    {
+        document.getElementById("alname-error-msg").innerHTML = ''
     }
 
     if (!isRequired(email)) {
         //window.alert("Email cannot be blank.");
+        document.getElementById("aemail-error-msg").innerHTML = 'Email cannot be blank.'
         //email.focus();
-        return false;
+        success = false;
+    }else
+    {
+        document.getElementById("aemail-error-msg").innerHTML = ''
     }
 
     if (!isRequired(phone)) {
         //window.alert("Phone cannot be blank");
+        document.getElementById("aphone-error-msg").innerHTML = 'Phone cannot be blank.'
         //phone.focus();
+        success = false;
+    }else
+    {
+        document.getElementById("aphone-error-msg").innerHTML = ''
+    }
+
+    if(success == false)
+    {
         return false;
     }
 
