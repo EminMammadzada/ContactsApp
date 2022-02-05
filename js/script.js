@@ -249,24 +249,38 @@ async function validLogin() {
     const isBetween = (length, min, max) => length < min || length > max ? false : true;
     const min = 3, max = 25;
 
-    if (!isRequired(username)) {
-        window.alert("Username cannot be blank.");
-        username.focus();
-        return false;
-    }
+    let success = true;
 
-    if (!isBetween(username.length, min, max)) {
-        window.alert("Username must be between 3 and 25 characters.");
-        username.focus();
-        return false;
+    if (!isRequired(username)) {
+        //window.alert("Username cannot be blank.");
+        document.getElementById("user-error-msg").innerHTML = 'Username cannot be blank.'
+        //username.focus();
+        success = false;
+    }
+    else if (!isBetween(username.length, min, max)) {
+        //window.alert("Username must be between 3 and 25 characters.");
+        document.getElementById("user-error-msg").innerHTML = 'Username must be between 3 and 25 characters.'
+        //username.focus();
+        success = false;
+    }else
+    {
+        document.getElementById("user-error-msg").innerHTML = ''
     }
 
     if (!isRequired(password)) {
-        window.alert("Password cannot be blank.");
-        password.focus();
-        return false;
+        //window.alert("Password cannot be blank.");
+        document.getElementById("pass-error-msg").innerHTML = 'Password cannot be blank.'
+        //password.focus();
+        success = false;
+    }else
+    {
+        document.getElementById("pass-error-msg").innerHTML = ''
     }
 
+    if(success == false)
+    {
+        return false;
+    }
 
     try{
         password = md5(password)

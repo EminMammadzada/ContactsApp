@@ -15,12 +15,14 @@
     </head>
   <body>
 
+    <!--
     <script>
         const userID = document.cookie.split(";")[0]
         if (userID){
             window.location.href = "http://primaljet.com/HTML/contact.html"
         }
     </script>
+    -->
 
     <!-- Navigate Bar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -64,8 +66,18 @@
                                 <label>Username</label>
                                 <input required type="text" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm" id="user"  placeholder="Enter username">
 
+                                <div>
+                                    <small class="text-danger" id="user-error-msg"></small>
+                                </div>
+
                                 <label class="mt-1">Password</label>
                                 <input type="password" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm" id="password"  placeholder="Enter password">
+
+                                <div>
+                                    <small class="text-danger" id="pass-error-msg"></small>
+                                </div>
+
+                                <div id="pass-error-msg"></div>
 
                                 <button type="button" id="registerButton" class="btn btn-success btn-border-radius-lg shadow fw-bold col-12 mt-3 mb-3" onclick="validLogin()">Login!</button>
                                 <span id="loginResult"></span>
