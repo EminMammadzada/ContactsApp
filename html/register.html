@@ -58,14 +58,31 @@
                                         <label class="mr-auto" for="rfirst">First name</label>
                                         <input type="text" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm" id="rfirst"  placeholder="Enter your first name"> 
                                     </div>
+
+                                    <div>
+                                        <small class="text-danger" id="fname-error-msg"></small>
+                                    </div>
                                     
                                     <label class="mr-auto mt-1" for="rlast">Last name</label>
                                     <input type="text" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm" id="rlast"  placeholder="Enter your last name">
 
+                                    <div>
+                                        <small class="text-danger" id="lname-error-msg"></small>
+                                    </div>
+
                                     <label class="mr-auto mt-1" for="ruser">Username</label>
                                     <input type="text" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm" id="ruser"  placeholder="Create username">
+
+                                    <div>
+                                        <small class="text-danger" id="user-error-msg"></small>
+                                    </div>
+
                                     <label class="mr-auto mt-1" for="rpassword">Password</label>
                                     <input type="password" class="form-control pt-2 pb-2 mt-2 mb-2 shadow-sm" id="rpassword"  placeholder="Create password">
+
+                                    <div>
+                                        <small class="text-danger" id="pass-error-msg"></small>
+                                    </div>
 
                                     <button type="button" id="registerButton" class="btn buttons btn-success btn-border-radius-lg shadow fw-bold col-12 mt-3 mb-3" onclick="validRegister()">Sign Up!</button>
                                     <span id="registerResult"></span>

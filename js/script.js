@@ -139,33 +139,55 @@ async function validRegister() {
     const isBetween = (length, min, max) => length < min || length > max ? false : true;
     const min = 3, max = 25;
 
+    let success = true;
+
     if (!isRequired(firstname)) {
-        window.alert("First name cannot be blank.");
-        firstname.focus();
-        return false;
+        //window.alert("First name cannot be blank.");
+        document.getElementById("fname-error-msg").innerHTML = 'First name cannot be blank.'
+        //firstname.focus();
+        success = false;
+    }else
+    {
+        document.getElementById("fname-error-msg").innerHTML = ''
     }
 
     if (!isRequired(lastname)) {
-        window.alert("Last name cannot be blank");
-        lastname.focus();
-        return false;
+        //window.alert("Last name cannot be blank");
+        document.getElementById("lname-error-msg").innerHTML = 'Last name cannot be blank.'
+        //lastname.focus();
+        success = false;
+    }else
+    {
+        document.getElementById("lname-error-msg").innerHTML = ''
     }
 
     if (!isRequired(username)) {
-        window.alert("Username cannot be blank.");
-        username.focus();
-        return false;
-    }
-
-    if (!isBetween(username.length, min, max)) {
-        window.alert("Username must be between 3 and 25 characters.");
-        username.focus();
-        return false;
+        //window.alert("Username cannot be blank.");
+        document.getElementById("user-error-msg").innerHTML = 'Username cannot be blank.'
+        //username.focus();
+        success = false;
+    }else if (!isBetween(username.length, min, max)) {
+        //window.alert("Username must be between 3 and 25 characters.");
+        document.getElementById("user-error-msg").innerHTML = 'Username must be between 3 and 25 characters.'
+        //username.focus();
+        success = false;
+    }else
+    {
+        document.getElementById("user-error-msg").innerHTML = ''
     }
 
     if (!isRequired(password)) {
-        window.alert("Password cannot be blank.");
-        password.focus();
+        //window.alert("Password cannot be blank.");
+        document.getElementById("pass-error-msg").innerHTML = 'Password cannot be blank.'
+        //password.focus();
+        success = false;
+    }else
+    {
+        document.getElementById("pass-error-msg").innerHTML = ''
+    }
+
+    if(success == false)
+    {
         return false;
     }
 
@@ -206,7 +228,8 @@ async function searchContact(){
     }
 
     if (searchquery == ""){
-        window.alert("Search field cannot be blank");
+        //window.alert("Search field cannot be blank");
+        document.getElementById("search-error-msg").innerHTML = 'Search field cannot be blank.'
         return false;
     }
 
@@ -312,26 +335,26 @@ async function addContact() {
     const isRequired = value => value === '' ? false : true;
 
     if (!isRequired(firstname)) {
-        window.alert("First name cannot be blank.");
-        firstname.focus();
+        //window.alert("First name cannot be blank.");
+        //firstname.focus();
         return false;
     }
 
     if (!isRequired(lastname)) {
-        window.alert("Last name cannot be blank");
-        lastname.focus();
+        //window.alert("Last name cannot be blank");
+        //lastname.focus();
         return false;
     }
 
     if (!isRequired(email)) {
-        window.alert("Email cannot be blank.");
-        email.focus();
+        //window.alert("Email cannot be blank.");
+        //email.focus();
         return false;
     }
 
     if (!isRequired(phone)) {
-        window.alert("Phone cannot be blank");
-        phone.focus();
+        //window.alert("Phone cannot be blank");
+        //phone.focus();
         return false;
     }
 
@@ -386,25 +409,48 @@ async function updateContact(){
     let email = document.getElementById("editEmail").value;
     let phone = document.getElementById("editPhone").value;
 
+    let success = true;
+
     const isRequired = value => value === '' ? false : true;
 
     if (!isRequired(firstname)) {
-        window.alert("First name cannot be blank.");
-        return false;
+        //window.alert("First name cannot be blank.");
+        document.getElementById("fname-error-msg").innerHTML = 'First name cannot be blank.'
+        success = false;
+    }else
+    {
+        document.getElementById("fname-error-msg").innerHTML = ''
     }
 
     if (!isRequired(lastname)) {
-        window.alert("Last name cannot be blank");
-        return false;
+        //window.alert("Last name cannot be blank");
+        document.getElementById("lname-error-msg").innerHTML = 'Last name cannot be blank.'
+        success = false;
+    }else
+    {
+        document.getElementById("lname-error-msg").innerHTML = ''
     }
 
     if (!isRequired(email)) {
-        window.alert("Email cannot be blank.");
-        return false;
+        //window.alert("Email cannot be blank.");
+        document.getElementById("email-error-msg").innerHTML = 'Email cannot be blank.'
+        success = false;
+    }else
+    {
+        document.getElementById("email-error-msg").innerHTML = ''
     }
 
     if (!isRequired(phone)) {
-        window.alert("Phone cannot be blank");
+        //window.alert("Phone cannot be blank");
+        document.getElementById("phone-error-msg").innerHTML = 'Phone cannot be blank.'
+        success = false;
+    }else
+    {
+        document.getElementById("phone-error-msg").innerHTML = ''
+    }
+
+    if(success == false)
+    {
         return false;
     }
 
