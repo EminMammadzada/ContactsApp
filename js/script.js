@@ -267,6 +267,7 @@ async function searchContact(){
 async function validLogin() {
     let username = document.getElementById("user").value;
     let password = document.getElementById("password").value;
+    document.getElementById("invalid-login-msg").innerHTML = ''
 
     const isRequired = value => value === '' ? false : true;
     const isBetween = (length, min, max) => length < min || length > max ? false : true;
@@ -322,6 +323,7 @@ async function validLogin() {
     }
 
     catch(e){
+        document.getElementById("invalid-login-msg").innerHTML = 'Invalid username or password.'
         console.log("Error happened ugh", e)
     }
 }
